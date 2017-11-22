@@ -1,37 +1,9 @@
-## Welcome to GitHub Pages
+# flickr API scraper
+An app that scrapes the flickr API from a tag and displays results in one page.
 
-You can use the [editor on GitHub](https://github.com/anevins12/Flickr-API-scraper/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Setup
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/anevins12/Flickr-API-scraper/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Accessibility concerns
+There are some accessibility concerns with the wireframes, but to meet the requirements I will implement what is in the wireframes and instead improve the markup where possible.
+* There are many "View on flickr" links with the same text, that would be confusing to people using assistive technologies;
+* In the listing view, links are duplicated for the image and title and would be tedious to navigate for keyboard users.
