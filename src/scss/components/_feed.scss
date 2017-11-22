@@ -1,0 +1,99 @@
+// Feed component
+$feed-border-colour: $grey1;
+
+.feed {
+
+	.feed__list-item {
+		border-top: 2px dashed $feed-border-colour;
+		margin-top: 10px;
+		padding-top: 10px;
+
+		@include breakpoint($tablet-small) {
+			@include clearfix;
+		}
+
+		&:first-child {
+			border: 0;
+			margin-top: 10px;
+			padding-top: 0;
+		}
+	}
+
+	.feed__image-wrapper {
+		margin-bottom: 1em;
+
+		@include breakpoint($tablet-small) {
+			float: left;
+			margin: {
+				bottom: 0;
+				right: 2%;
+			}
+			width: 18%;
+		}
+	}
+
+	.feed__title {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		// Fix hidden focus indicator
+		a {
+			display: inline-block;
+
+			&:focus {
+				border: 1px solid;
+			}
+		}
+	}
+
+	.feed__detail {
+
+		@include breakpoint($tablet-small) {
+			float: left;
+			width: 80%;
+		}
+	}
+
+	// Reset byline styles
+	.feed__author,
+	.feed__date {
+		border: 0;
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+
+	.feed__date,
+	// Reset byline styles
+	.feed__date:first-child {
+
+		@include breakpoint($tablet) {
+			float: right;
+			margin-left: 10px;
+		}
+	}
+
+	.feed__author-wrapper {
+
+		@include breakpoint($tablet) {
+			float: left;
+		}
+
+	}
+
+	.feed__author {
+
+		@include breakpoint($tablet-small) {
+			float: left;
+		}
+	}
+
+	.feed__reference-wrapper {
+
+		@include breakpoint($tablet-small) {
+			float: left;
+			margin-left: 10px;
+		}
+	}
+}
