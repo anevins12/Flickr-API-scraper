@@ -1,0 +1,31 @@
+{
+  "name": "flickr-api-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "flickr-api-scraper.js",
+  "scripts": {
+    "serve": "grunt serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anevins12/Flickr-API-scraper.git"
+  },
+  "author": "anevins12",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/anevins12/Flickr-API-scraper/issues"
+  },
+  "homepage": "https://github.com/anevins12/Flickr-API-scraper#readme",
+  "devDependencies": {
+    "breakpoint-sass": "^2.7.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-http-server": "^2.0.0",
+    "grunt-sass": "^2.0.0",
+    "grunt-scss-lint": "^0.5.0",
+    "jquery.clickable": "^2.0.1",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}
