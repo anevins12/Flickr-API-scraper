@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 			},
 			scripts: {
 				files: ['src/js/*.js'],
-				tasks: ['jshint', 'concat'],
+				tasks: ['concat', 'jshint'],
 				options: {
 					spawn: false
 				},
@@ -61,7 +61,6 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'node_modules/jquery/dist/jquery.min.js',
-					'node_modules/jquery.clickable/jquery.clickable.min.js',
 					'src/js/flickr-api-scraper.js'
 				],
 				dest: 'dist/flickr-api-scraper.js',
