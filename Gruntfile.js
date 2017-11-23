@@ -59,7 +59,10 @@ module.exports = function(grunt) {
 		},
 		concat: {
 			dist: {
-				src: ['src/js/flickr-api-scraper.js'],
+				src: [
+					'src/js/flickr-api-scraper.js',
+					'node_modules/jquery/dist/jquery.min.js'
+				],
 				dest: 'dist/flickr-api-scraper.js',
 			},
 		},
