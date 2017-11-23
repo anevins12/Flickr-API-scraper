@@ -94,6 +94,12 @@ h3 {
   position: absolute;
   width: 1px; }
 
+button {
+  background: none;
+  border: 0;
+  font-size: inherit;
+  text-decoration: underline; }
+
 @media (min-width: 800px) {
   .backlink {
     text-align: right; } }

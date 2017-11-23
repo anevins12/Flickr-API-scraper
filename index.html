@@ -17,12 +17,13 @@
 					<ul class="feed__list">
 						<li class="feed__list-item">
 							<div class="feed__image-wrapper">
-								<img alt="" class="feed__image" src="http://placehold.it/100x100" />
+								<button aria-controls="template-detail">
+									<img alt="Title of feed" class="feed__image" src="http://placehold.it/100x100" />
+								</button>
 							</div><!-- .feed__image-wrapper -->
 							<div class="feed__detail">
 								<h2 class="feed__title" id="feed__title-1">
-									<a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus sapien dolor, eu congue ligula efficitur ut. Ut volutpat quam maximus sapien posuere, quis lacinia diam fringilla.
-									</a>
+									<button aria-controls="template-detail">Title of feed</button>
 								</h2>
 								<div class="feed__author-wrapper">
 									<div class="byline">
@@ -46,7 +47,7 @@
 					</ul>
 				</div><!-- .feed -->
 			</div><!-- .template-listing -->
-			<div class="template-detail">
+			<div class="template-detail" id="template-detail">
 				<h1>Photo title 1</h1>
 				<div class="backlink">
 					<button aria-controls="template-listing" class="backlink__btn">
