@@ -12,46 +12,18 @@ module.exports = function(grunt) {
 				sourceMap: true
 			},
 			dist: {
-				files: {
-					'dist/style.css': 'src/scss/style.scss'
-				}
+				files: [{
+					expand: true,
+					cwd: 'src/scss/',
+					src: ['**/*.scss'],
+					dest: 'dist',
+					ext: '.css'
+				}]
 			}
 		},
-		'http-server': {
-	 
-	        'dev': {
-	 
-	            // the server root directory 
-	            root: '',
-	 
-	            // the server port 
-	            // can also be written as a function, e.g. 
-	            // port: function() { return 8282; } 
-	            port: 3003,
-	 
-	            // the host ip address 
-	            // If specified to, for example, '127.0.0.1' the server will 
-	            // only be available on that ip. 
-	            // Specify '0.0.0.0' to be available everywhere 
-	            host: '192.168.56.1',
-	 
-	            cache: 0,
-	            showDir : true,
-	            autoIndex: true,
-	 
-	            // server default file extension 
-	            ext: 'html',
-	 
-	            // run in parallel with other tasks 
-	            runInBackground: false,
-	 
-	            // Tell grunt task to open the browser 
-	            openBrowser : false
-	        }
-	    },
 		watch: {
 			sass: {
-				files: ['src/scss/*.scss'],
+				files: ['src/scss/components/*.scss', 'src/scss/*.scss'],
 				tasks: ['sass'],
 				options: {
 					spawn: false
@@ -77,11 +49,9 @@ module.exports = function(grunt) {
 		        'Gruntfile.js',
 		        'src/js/flickr-api-scraper.js'
 		    ],
-		},	
+		},
 		scsslint: {
-			allFiles: [
-				'src/scss/*.scss',
-			],
+			allFiles: ['src/scss/components/*.scss', 'src/scss/*.scss'],
 			options: {
 				bundleExec: true,
 				reporterOutput: 'scss-lint-report.xml'
@@ -95,5 +65,5 @@ module.exports = function(grunt) {
 		},
 	});
 
-	grunt.registerTask('serve', ['http-server'], ['watch']);
+	grunt.registerTask('serve', 'watch');
 };

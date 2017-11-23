@@ -1,0 +1,28 @@
+// Grids
+
+.grid {
+
+	.grid-container {
+		margin: 1em auto 0;
+		max-width: $base-max-width;
+		padding: 0 1em;
+	}
+
+	.grid-column {
+		@include breakpoint($tablet) {
+			float: left;
+		}
+
+		&--33 {
+			@include breakpoint($tablet) {
+				width: 33.3%;
+			}
+		}
+
+		&--66 {
+			@include breakpoint($tablet) {
+				width: 66.6%
+			}
+		}
+	}
+}

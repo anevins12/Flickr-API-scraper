@@ -1,0 +1,12 @@
+// Backlink
+
+.backlink {
+
+	@include breakpoint($tablet) {
+		text-align: right;
+	}
+
+	.backlink__btn {
+		padding: 0.5em 1em;
+	}
+}
