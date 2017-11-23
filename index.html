@@ -10,20 +10,20 @@
 	<div class="grid">
 		<div class="grid-container">
 
-			<div class="template-listing" id="template-listing">
+			<div class="template-listing clearfix" id="template-listing">
 				<h1>Flickr public feed</h1>
 
 				<div class="feed">
 					<ul class="feed__list">
 						<li class="feed__list-item">
 							<div class="feed__image-wrapper">
-								<button aria-controls="template-detail">
+								<button aria-controls="template-detail" data-open-detail>
 									<img alt="Title of feed" class="feed__image" src="http://placehold.it/100x100" />
 								</button>
 							</div><!-- .feed__image-wrapper -->
 							<div class="feed__detail">
 								<h2 class="feed__title" id="feed__title-1">
-									<button aria-controls="template-detail">Title of feed</button>
+									<button aria-controls="template-detail" data-open-detail>Photo title 1</button>
 								</h2>
 								<div class="feed__author-wrapper">
 									<div class="byline">
@@ -47,10 +47,10 @@
 					</ul>
 				</div><!-- .feed -->
 			</div><!-- .template-listing -->
-			<div class="template-detail" id="template-detail">
+			<div class="template-detail clearfix" id="template-detail">
 				<h1>Photo title 1</h1>
 				<div class="backlink">
-					<button aria-controls="template-listing" class="backlink__btn">
+					<button aria-controls="template-listing" class="backlink__btn" data-open-listing >
 						Back
 						<span class="hidden">to listing view</span>
 					</button>
