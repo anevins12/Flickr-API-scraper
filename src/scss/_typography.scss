@@ -22,6 +22,12 @@ h3 {
 	font-size: 1.5em;
 }
 
+button {
+    background: none;
+    border: 0;
+    font-size: inherit;
+    text-decoration: underline;
+}
 
 .hidden {
     border: 0;
@@ -32,4 +38,8 @@ h3 {
     padding: 0;
     position: absolute;
     width: 1px;
+}
+
+.clearfix {
+    @include clearfix;
 }

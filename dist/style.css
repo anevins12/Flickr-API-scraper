@@ -84,6 +84,12 @@ h2 {
 h3 {
   font-size: 1.5em; }
 
+button {
+  background: none;
+  border: 0;
+  font-size: inherit;
+  text-decoration: underline; }
+
 .hidden {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -93,6 +99,11 @@ h3 {
   padding: 0;
   position: absolute;
   width: 1px; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 @media (min-width: 800px) {
   .backlink {
