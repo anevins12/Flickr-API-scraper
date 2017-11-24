@@ -75,9 +75,10 @@ function handleFocus(target) {
 
 function handleAPI() {
 	/*
+	 * Extracts and applies API to the DOM.
 	 *
 	 * To avoid embedding markup inside of the script,
-	 * the current list item will be cloned for each item
+	 * DOM items will be cloned
  	 */
 	'use strict';
 
