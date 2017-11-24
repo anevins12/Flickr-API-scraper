@@ -32,19 +32,16 @@ $feed-border-colour: $grey1;
 		}
 	}
 
-	.feed__title {
+	.feed__title__btn,
+	.feed__author a {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
 
-		// Fix hidden focus indicator
-		a {
-			display: inline-block;
-
-			&:focus {
-				border: 1px solid;
-			}
-		}
+	.feed__title__btn {
+		text-align: left;
+		width: 100%;
 	}
 
 	.feed__detail {
@@ -52,6 +49,12 @@ $feed-border-colour: $grey1;
 		@include breakpoint($tablet-small) {
 			float: left;
 			width: 80%;
+		}
+
+		// Prevent long author names breaking the layout
+		a {
+			display: inline-block;
+			max-width: 250px;
 		}
 	}
 

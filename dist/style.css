@@ -149,19 +149,24 @@ button {
       margin-right: 2%;
       width: 18%; } }
 
-.feed .feed__title {
+.feed .feed__title__btn,
+.feed .feed__author a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
-  .feed .feed__title a {
-    display: inline-block; }
-    .feed .feed__title a:focus {
-      border: 1px solid; }
+
+.feed .feed__title__btn {
+  text-align: left;
+  width: 100%; }
 
 @media (min-width: 480px) {
   .feed .feed__detail {
     float: left;
     width: 80%; } }
+
+.feed .feed__detail a {
+  display: inline-block;
+  max-width: 250px; }
 
 .feed .feed__author,
 .feed .feed__date {

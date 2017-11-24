@@ -13,33 +13,34 @@
 			<div class="template-listing clearfix" id="template-listing">
 				<h1>Flickr public feed</h1>
 
-				<div class="feed">
-					<ul class="feed__list">
-						<li class="feed__list-item">
+				<div class="feed" data-feed-wrapper>
+					<ul class="feed__list" data-feed-list>
+						<li class="feed__list-item" data-feed-container>
 							<div class="feed__image-wrapper">
 								<button aria-controls="template-detail" data-open-detail>
-									<img alt="Title of feed" class="feed__image" src="http://placehold.it/100x100" />
+									<img alt="Title of feed" class="feed__image" data-feed-img src="http://placehold.it/100x100" />
 								</button>
 							</div><!-- .feed__image-wrapper -->
 							<div class="feed__detail">
 								<h2 class="feed__title" id="feed__title-1">
-									<button aria-controls="template-detail" data-open-detail>Photo title 1</button>
+									<button aria-controls="template-detail" class="feed__title__btn" data-feed-title data-open-detail>Photo title 1</button>
 								</h2>
 								<div class="feed__author-wrapper">
 									<div class="byline">
 										<ul class="byline__list">
 											<li class="byline__list-item feed__date">
-												Published: 21<sup>st</sup> Mar 2017 at 12:00
+												<span>Published:</span>
+												<span data-feed-date>21st Mar 2017 at 12:00</span>
 											</li>
 											<li class="byline__list-item feed__author">
-												<a href="#">Author name</a>
+												<a href="#" data-feed-author>Author name</a>
 											</li>
 										</ul>
 									</div><!-- .byline -->
 								</div><!-- .feed__author-wrapper -->
 								<div class="feed__reference-wrapper">
 									<p class="feed__reference">
-										<a aria-describedby="feed__title-1" href="#">View on flickr</a>
+										<a aria-describedby="feed__title-1" class="feed__reference__link" data-feed-reference href="#">View on flickr</a>
 									</p>
 								</div><!-- .feed__author-wrapper -->
 							</div><!-- .feed__detail -->
@@ -50,7 +51,7 @@
 			<div class="template-detail clearfix" id="template-detail">
 				<h1>Photo title 1</h1>
 				<div class="backlink">
-					<button aria-controls="template-listing" class="backlink__btn" data-open-listing >
+					<button aria-controls="template-listing" class="backlink__btn" data-open-listing>
 						Back
 						<span class="hidden">to listing view</span>
 					</button>
@@ -58,17 +59,18 @@
 				<div class="byline">
 					<ul class="byline__list">
 						<li class="byline__list-item">
-							<a href="#">Author name</a>
+							<a href="#" data-feed-author>Author name</a>
 						</li>
 						<li class="byline__list-item">
-							Published: 21<sup>st</sup> Mar 2017 at 12:00
+							<span>Published:</span>
+							<span data-feed-published>21st Mar 2017 at 12:00</span>
 						</li>
 					</ul>
 				</div><!-- .byline -->
 				<div class="grid-column grid-column--33">
-					<img alt="" class="feed__image" src="http://placehold.it/200x200" />
+					<img alt="" class="feed__image" data-feed-img src="http://placehold.it/200x200" />
 				</div><!-- .grid-column -->
-				<div class="grid-column grid-column--66">
+				<div class="grid-column grid-column--66" data-feed-desc>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultrices ullamcorper libero, eu pharetra ipsum consequat eget. Nunc scelerisque venenatis ante, ut euismod ante aliquam vitae. Fusce dictum lacinia mollis. Sed eget elementum neque. Pellentesque pellentesque ante nec lorem hendrerit pellentesque. Aliquam ipsum arcu, auctor vel libero in, lacinia laoreet ipsum. Nulla eu lorem egestas, elementum arcu sit amet, semper risus. Pellentesque fermentum nibh nec nisi posuere, finibus ultrices ipsum aliquet. Quisque vitae consectetur tellus. Mauris ullamcorper, erat vel commodo blandit, magna neque fermentum ex, eu laoreet eros neque dictum risus. Curabitur dui orci, feugiat non ornare id, mattis et est. In hac habitasse platea dictumst. Nunc rutrum mauris lacus, sit amet vehicula mauris blandit eu. Integer commodo aliquet mi. Quisque ac enim ante.
 					</p>
 					<p>Duis placerat nibh non diam venenatis, et congue tellus ultrices. Vivamus venenatis dui lorem, id sagittis diam pharetra nec. Proin finibus a enim eu fermentum. Vestibulum molestie posuere eros, a interdum dui auctor ut. Fusce nec purus mauris. Donec vestibulum ligula placerat tortor viverra sollicitudin. In lobortis ornare sagittis. Curabitur venenatis finibus sapien, quis rhoncus nunc consectetur a. Nullam rhoncus nisi congue ligula bibendum finibus.
@@ -77,10 +79,10 @@
 						<h2 class="tags__title">Tags:</h2>
 						<ul class="tags__list">
 							<li class="tags__list-item">
-								<a href="#">Tag 1</a>
+								<a class="tags__tag" data-feed-tag href="#">Tag 1</a>
 							</li>
 							<li class="tags__list-item">
-								<a href="#">Tag 2</a>
+								<a class="tags__tag" data-feed-tag href="#">Tag 2</a>
 							</li>
 						</ul>
 					</div><!-- .tags -->
