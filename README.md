@@ -31,7 +31,7 @@ $ http-server
 
 Use `npm run serve` to watch over file changes:
 ```bash
-$ http-server
+$ npm run serve
 ```
 
 ## Accessibility concerns
