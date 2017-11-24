@@ -88,6 +88,7 @@ button {
   background: none;
   border: 0;
   font-size: inherit;
+  padding: 0;
   text-decoration: underline; }
 
 .hidden {
@@ -114,15 +115,16 @@ button {
 
 .byline {
   margin-bottom: 10px; }
-  .byline .byline__list-item {
-    border-left: 5px solid #eee;
-    display: inline-block;
-    margin-left: 10px;
-    padding-left: 10px; }
-    .byline .byline__list-item:first-child {
-      border: 0;
-      margin-left: 0;
-      padding-left: 0; }
+  @media (min-width: 480px) {
+    .byline .byline__list-item {
+      border-left: 5px solid #eee;
+      display: inline-block;
+      margin-left: 10px;
+      padding-left: 10px; } }
+  .byline .byline__list-item:first-child {
+    border: 0;
+    margin-left: 0;
+    padding-left: 0; }
 
 .feed .feed__list-item {
   border-top: 2px dashed #eee;
@@ -185,7 +187,13 @@ button {
 @media (min-width: 480px) {
   .feed .feed__reference-wrapper {
     float: left;
-    margin-left: 10px; } }
+    margin-left: 10px;
+    position: relative;
+    top: -0.6em; } }
+
+@media (min-width: 800px) {
+  .feed .feed__reference-wrapper {
+    position: static; } }
 
 .tags .tags__title {
   font-size: 1em;

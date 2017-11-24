@@ -94,6 +94,12 @@ $feed-border-colour: $grey1;
 		@include breakpoint($tablet-small) {
 			float: left;
 			margin-left: 10px;
+			position: relative;
+			top: -0.6em;
+		}
+
+		@include breakpoint($tablet) {
+			position: static;
 		}
 	}
 }

@@ -5,10 +5,12 @@ $byline-border-colour: $grey1;
 	margin-bottom: 10px;
 
 	.byline__list-item {
-		border-left: 5px solid $byline-border-colour;
-		display: inline-block;
-		margin-left: 10px;
-		padding-left: 10px;
+		@include breakpoint($tablet-small) {
+			border-left: 5px solid $byline-border-colour;
+			display: inline-block;
+			margin-left: 10px;
+			padding-left: 10px;
+		}
 
 		&:first-child {
 			border: 0;
