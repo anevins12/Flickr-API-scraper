@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		sass: {
 			options: {
-				sourceMap: true
+			sourceMap: true
 			},
 			dist: {
 				files: [{
@@ -31,24 +31,20 @@ module.exports = function(grunt) {
 			},
 			scripts: {
 				files: ['src/js/*.js'],
-				tasks: ['concat', 'jshint'],
+				tasks: ['jshint'],
 				options: {
 					spawn: false
 				},
 			},
 		},
 		jshint: {
-		    options: {
-		        globals: {
-		            '$': true,
-		            'jQuery': true
-		        },
-		        jshintrc: '.jshintrc'
-		    },
-		    files: [
-		        'Gruntfile.js',
-		        'src/js/flickr-api-scraper.js'
-		    ],
+			options: {
+				jshintrc: '.jshintrc'
+			},
+			files: [
+				'Gruntfile.js',
+				'src/js/flickr-api-scraper.js'
+			],
 		},
 		scsslint: {
 			allFiles: ['src/scss/components/*.scss', 'src/scss/*.scss'],
@@ -61,6 +57,7 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'node_modules/jquery/dist/jquery.min.js',
+					'node_modules/dateformat/lib/dateformat.js',
 					'src/js/flickr-api-scraper.js'
 				],
 				dest: 'dist/flickr-api-scraper.js',
@@ -68,5 +65,5 @@ module.exports = function(grunt) {
 		},
 	});
 
-	grunt.registerTask('serve', 'watch');
+	grunt.registerTask('serve', ['watch', 'concat']);
 };
