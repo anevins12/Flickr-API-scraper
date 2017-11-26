@@ -1,0 +1,11 @@
+// Loading
+
+.loading {
+	display: none;
+	max-width: 150px;
+	margin: 0 auto;
+
+	&.js-is-visible {
+		display: block;
+	}
+}

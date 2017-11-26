@@ -8,8 +8,8 @@ function init() {
 	 */
 	'use strict';
 
-	bindEvents();
 	handleAPI();
+	bindEvents();
 }
 
 function bindEvents() {
@@ -48,8 +48,10 @@ function toggleTemplate(current, next, initial) {
 	 */
 	'use strict';
 
-	current.hide();
-	next.show();
+	var toggleClass = 'js-is-visible';
+
+	current.hide()
+	next.fadeIn()
 
 	// Don't move focus on initial load
 	if (!initial) {
@@ -78,14 +80,21 @@ function handleAPI() {
 	'use strict';
 
 	var args = '?tags=potato&tagmode=all&format=json&jsoncallback=?',
-		api = 'https://api.flickr.com/services/feeds/photos_public.gne' + args;
+		api = 'https://api.flickr.com/services/feeds/photos_public.gne' + args,
+		loadingIcon = $('[data-loading]'),
+		loadingToggleClass = 'js-is-visible',
+		wrapper = $('[data-feed-wrapper]'),
+		containerIdentifier = '[data-feed-container]',
+		container = $(containerIdentifier, wrapper);
+
+	// Hide placeholder list item
+	container.hide();
+	// Show loading icon
+	loadingIcon.addClass(loadingToggleClass)
 
 	$.getJSON(api, function(data) {
-		var wrapper = $('[data-feed-wrapper]'),
-			containerIdentifier = '[data-feed-container]',
-			feedMarkup = {
+		var feedMarkup = {
 				list: $('[data-feed-list]', wrapper),
-				container: $(containerIdentifier, wrapper),
 				title: '[data-feed-title]',
 				media: '[data-feed-img]',
 				link: '[data-feed-reference]',
@@ -96,17 +105,22 @@ function handleAPI() {
 			},
 			responseItems = data.items,
 			responseLength = responseItems.length,
-			count = 0;
+			count = 0,
+			toggleClass = 'js-is-populated';
 
 		// Only looping 18 items as the markup already contains a list item
 		for (count; count < responseLength -1; count++) {
-			var clonedContainer = feedMarkup.container.clone();
+			var clonedContainer = container;
 
+			// Remove hidden state on first item
+			if (count === 0) {
+				clonedContainer.show();
+			}
+
+			// Clone the markup for each item
+			clonedContainer = clonedContainer.clone();
 			feedMarkup.list.append(clonedContainer);
 		}
-
-		// For new buttons in the DOM
-		bindEvents();
 
 		$.each(responseItems, function(index, item) {
 			var responseItem = $(item).get(0),
@@ -138,5 +152,10 @@ function handleAPI() {
 			// Populate: Published time
 			$(feedMarkup.time_taken, listItem).html(responseTime);
 		});
+
+		// Show feed
+		wrapper.addClass(toggleClass);
+		// Hide loading icon
+		loadingIcon.removeClass(loadingToggleClass)
 	});
 }

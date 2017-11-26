@@ -41,7 +41,8 @@ module.exports = function(grunt) {
 		    options: {
 		        globals: {
 		            '$': true,
-		            'jQuery': true
+		            'jQuery': true,
+		            'dateFormat': true
 		        },
 		        jshintrc: '.jshintrc'
 		    },

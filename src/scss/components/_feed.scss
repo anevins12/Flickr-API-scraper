@@ -2,6 +2,12 @@
 $feed-border-colour: $grey1;
 
 .feed {
+	// Hide on initial load
+	display: none;
+
+	&.js-is-populated {
+		display: block;
+	}
 
 	.feed__list-item {
 		border-top: 2px dashed $feed-border-colour;
