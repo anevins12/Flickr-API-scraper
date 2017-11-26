@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/anevins12/Flickr-API-scraper.git"
   },
+  "engines": {
+    "node": ">= v8.9.x"
+  },
   "author": "anevins12",
   "license": "GPL-3.0",
   "bugs": {
@@ -18,6 +21,7 @@
   "homepage": "https://github.com/anevins12/Flickr-API-scraper#readme",
   "devDependencies": {
     "breakpoint-sass": "^2.7.1",
+    "dateformat": "^3.0.2",
     "grunt": "^1.0.1",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-jshint": "^1.1.0",

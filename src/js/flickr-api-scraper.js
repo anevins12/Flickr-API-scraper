@@ -91,7 +91,8 @@ function handleAPI() {
 				link: '[data-feed-reference]',
 				date_taken: '[data-feed-date]',
 				author:  '[data-feed-author]',
-				tag: '[data-feed-tag]'
+				tag: '[data-feed-tag]',
+				time_taken: '[data-feed-time]'
 			},
 			responseItems = data.items,
 			responseLength = responseItems.length,
@@ -114,12 +115,14 @@ function handleAPI() {
 				// Filter the current list item
 				listItem = listItems.get(index),
 				responseDate = responseItem.published,
-				responseDay,
-				responseMonth,
-				responseYear;
+				responseTime = responseDate;
 
 			// Reformat date
-			responseDate = new Date(responseDate);xss
+			responseDate = new Date(responseDate);
+			responseDate = dateFormat(responseDate, 'd mmm yyyy');
+
+			// Reformat time
+			responseTime = dateFormat('h:MM');
 
 			// Populate: Title
 			$(feedMarkup.title, listItem).html(responseItem.title);
@@ -130,8 +133,10 @@ function handleAPI() {
 			});
 			// Populate: Link
 			$(feedMarkup.link, listItem).attr('href', responseItem.link);
-			// Populate: Published
-			$(feedMarkup.date_taken, listItem).html(responseItem.published);
+			// Populate: Published date
+			$(feedMarkup.date_taken, listItem).html(responseDate);
+			// Populate: Published time
+			$(feedMarkup.time_taken, listItem).html(responseTime);
 		});
 	});
 }
