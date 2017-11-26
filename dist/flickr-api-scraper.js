@@ -244,7 +244,6 @@ function init() {
 	'use strict';
 
 	handleAPI();
-	bindEvents();
 }
 
 function bindEvents() {
@@ -258,39 +257,54 @@ function bindEvents() {
 		};
 
 	// Hide detail template
-	toggleTemplate(templates.detail, templates.listing, true);
+	toggleTemplate(templates.detail, templates.listing, false);
 
 	if (detailTriggers.length !== 0) {
 
-		detailTriggers.on('click', function() {
+		detailTriggers.on('click', function(event) {
 			// Show detail template
-			toggleTemplate(templates.listing, templates.detail);
+			toggleTemplate(templates.listing, templates.detail, event);
 		});
 	}
 
 	if (listingTriggers.length !== 0) {
 
-		listingTriggers.on('click', function() {
+		listingTriggers.on('click', function(event) {
 			// Show listing template
-			toggleTemplate(templates.detail, templates.listing);
+			toggleTemplate(templates.detail, templates.listing, event, true);
 		});
 	}
 }
 
-function toggleTemplate(current, next, initial) {
+function toggleTemplate(current, next, event, previous) {
 	/*
 	 * Shows the next template
 	 */
 	'use strict';
 
-	var toggleClass = 'js-is-visible';
+	var trailIdentifier = 'js-trail';
 
-	current.hide()
-	next.fadeIn()
+	// Hide current template
+	current.hide();
+	// Show next template
+	next.fadeIn();
 
-	// Don't move focus on initial load
-	if (!initial) {
-		handleFocus(next);
+	if (event) {
+		var trails = $('[' + trailIdentifier + ']');
+
+		// Clean trails
+		trails.removeAttr(trailIdentifier);
+
+		// Track the previously interacted button
+		$(event.target).attr(trailIdentifier, '');
+
+		if (previous) {
+			// Focus on the previous template
+			handleFocus(trails);
+		} else {
+			// Focus on the next template
+			handleFocus(next);
+		}
 	}
 }
 
@@ -325,7 +339,7 @@ function handleAPI() {
 	// Hide placeholder list item
 	container.hide();
 	// Show loading icon
-	loadingIcon.addClass(loadingToggleClass)
+	loadingIcon.addClass(loadingToggleClass);
 
 	$.getJSON(api, function(data) {
 		var feedMarkup = {
@@ -334,7 +348,7 @@ function handleAPI() {
 				media: '[data-feed-img]',
 				link: '[data-feed-reference]',
 				date_taken: '[data-feed-date]',
-				author:  '[data-feed-author]',
+				author: '[data-feed-author]',
 				tag: '[data-feed-tag]',
 				time_taken: '[data-feed-time]'
 			},
@@ -364,14 +378,22 @@ function handleAPI() {
 				// Filter the current list item
 				listItem = listItems.get(index),
 				responseDate = responseItem.published,
-				responseTime = responseDate;
+				responseAuthor = responseItem.author,
+				responseTime,
+				authorURL = '//www.flickr.com/photos/' + responseItem.author_id;
 
 			// Reformat date
 			responseDate = new Date(responseDate);
+			responseTime = responseDate;
 			responseDate = dateFormat(responseDate, 'd mmm yyyy');
-
 			// Reformat time
-			responseTime = dateFormat('h:MM');
+			responseTime = dateFormat(responseTime, 'h:MM');
+
+			// Reformat author; remove brackets and speech marks
+			responseAuthor = responseAuthor.substring(
+				responseAuthor.indexOf('(') + 2,
+				responseAuthor.lastIndexOf(')') - 1
+			);
 
 			// Populate: Title
 			$(feedMarkup.title, listItem).html(responseItem.title);
@@ -386,11 +408,17 @@ function handleAPI() {
 			$(feedMarkup.date_taken, listItem).html(responseDate);
 			// Populate: Published time
 			$(feedMarkup.time_taken, listItem).html(responseTime);
+			// Populate: Author
+			$(feedMarkup.author, listItem)
+				.attr('href', authorURL)
+				.html(responseAuthor);
 		});
 
 		// Show feed
 		wrapper.addClass(toggleClass);
 		// Hide loading icon
-		loadingIcon.removeClass(loadingToggleClass)
+		loadingIcon.removeClass(loadingToggleClass);
+		// Bind events to new markup
+		bindEvents();
 	});
 }

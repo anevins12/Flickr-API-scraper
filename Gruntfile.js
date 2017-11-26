@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		sass: {
 			options: {
-				sourceMap: true
+			sourceMap: true
 			},
 			dist: {
 				files: [{
@@ -38,18 +38,13 @@ module.exports = function(grunt) {
 			},
 		},
 		jshint: {
-		    options: {
-		        globals: {
-		            '$': true,
-		            'jQuery': true,
-		            'dateFormat': true
-		        },
-		        jshintrc: '.jshintrc'
-		    },
-		    files: [
-		        'Gruntfile.js',
-		        'src/js/flickr-api-scraper.js'
-		    ],
+			options: {
+				jshintrc: '.jshintrc'
+			},
+			files: [
+				'Gruntfile.js',
+				'src/js/flickr-api-scraper.js'
+			],
 		},
 		scsslint: {
 			allFiles: ['src/scss/components/*.scss', 'src/scss/*.scss'],
