@@ -1,0 +1,14 @@
+// Template
+
+.template {
+	display: none;
+
+	&-detail {
+
+		// The first 2 paragraphs duplicate what is already on the page
+		p:first-child,
+		p:nth-child(2) {
+			display: none;
+		}
+	}
+}

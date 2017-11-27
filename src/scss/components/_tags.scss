@@ -9,9 +9,13 @@
 		}
 
 		@include breakpoint($tablet-small) {
-			float: left;
+			display: inline-block;
 			margin-right: 10px;
 		}
+	}
+
+	.tags__list {
+		display: inline;
 	}
 
 	.tags__list-item {

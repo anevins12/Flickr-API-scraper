@@ -1,9 +1,15 @@
 # flickr API scraper
 An app that scrapes the flickr API from a tag and displays results in one page.
 
+# Techniques
+I've tried to reduce the amounts of API calls by manipulating the data that is already returned.
+For instance:
+* The author_id field returns the username and ID and I've filtered out the username;
+* The description field duplicates information that is already present on the page. I have hidden this with CSS.
+
 ## Setup
 ### Node
-First time setup of this plugin will require the node packages to be installed. 
+First time setup of this plugin will require the node packages to be installed.
 
 If you have NVM installed, make sure to use the correct node version:
 ```bash

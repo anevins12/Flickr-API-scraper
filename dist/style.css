@@ -87,6 +87,7 @@ h3 {
 button {
   background: none;
   border: 0;
+  cursor: pointer;
   font-size: inherit;
   padding: 0;
   text-decoration: underline; }
@@ -125,13 +126,6 @@ button {
     border: 0;
     margin-left: 0;
     padding-left: 0; }
-
-.loading {
-  display: none;
-  max-width: 150px;
-  margin: 0 auto; }
-  .loading.js-is-visible {
-    display: block; }
 
 .feed {
   display: none; }
@@ -200,17 +194,33 @@ button {
     .feed .feed__reference-wrapper {
       position: static; } }
 
+.loading {
+  display: none;
+  max-width: 150px;
+  margin: 0 auto; }
+  .loading.js-is-visible {
+    display: block; }
+
 .tags .tags__title {
   font-size: 1em;
   font-weight: 700; }
   @media (min-width: 480px) {
     .tags .tags__title {
-      float: left;
+      display: inline-block;
       margin-right: 10px; } }
+
+.tags .tags__list {
+  display: inline; }
 
 .tags .tags__list-item {
   display: inline-block;
   margin-bottom: 10px;
   margin-right: 1em; }
+
+.template {
+  display: none; }
+  .template-detail p:first-child,
+  .template-detail p:nth-child(2) {
+    display: none; }
 
 /*# sourceMappingURL=style.css.map */
