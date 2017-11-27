@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 
 	require('load-grunt-tasks')(grunt);
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	grunt.initConfig({
 		sass: {
@@ -31,11 +32,11 @@ module.exports = function(grunt) {
 			},
 			scripts: {
 				files: ['src/js/*.js'],
-				tasks: ['jshint'],
+				tasks: ['jshint', 'concat'],
 				options: {
 					spawn: false
 				},
-			},
+			}
 		},
 		jshint: {
 			options: {
@@ -64,7 +65,19 @@ module.exports = function(grunt) {
 				dest: 'dist/flickr-api-scraper.js',
 			},
 		},
+		uglify: {
+			options: {
+				mangle: false,
+				sourceMap: true,
+				sourceMapName: 'dist/flickr-api-scraper.map'
+			},
+			my_target: {
+				files: {
+					'dist/flickr-api-scraper.min.js': ['src/js/flickr-api-scraper.js']
+				}
+			}
+		}
 	});
 
-	grunt.registerTask('serve', ['watch', 'concat']);
+	grunt.registerTask('serve', ['watch']);
 };
