@@ -88,9 +88,14 @@ button {
   background: none;
   border: 0;
   cursor: pointer;
+  display: inline-block;
   font-size: inherit;
   padding: 0;
   text-decoration: underline; }
+
+button,
+a {
+  background: yellow; }
 
 .hidden {
   border: 0;
@@ -203,7 +208,8 @@ button {
 
 .tags .tags__title {
   font-size: 1em;
-  font-weight: 700; }
+  font-weight: 700;
+  margin-bottom: 0; }
   @media (min-width: 480px) {
     .tags .tags__title {
       display: inline-block;
@@ -214,7 +220,6 @@ button {
 
 .tags .tags__list-item {
   display: inline-block;
-  margin-bottom: 10px;
   margin-right: 1em; }
 
 .template {

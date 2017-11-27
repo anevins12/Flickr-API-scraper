@@ -122,6 +122,7 @@ function handleAPI() {
 				media: '[data-feed-img]',
 				tags: '[data-feed-tag-list]',
 				title: '[data-feed-title]',
+				titleBtn: '[data-feed-title-btn]',
 				time_taken: '[data-feed-time]'
 			},
 			responseItems = data.items,
@@ -173,7 +174,8 @@ function handleAPI() {
 				responseAuthor = responseItem.author,
 				responseTime,
 				authorURL = '//www.flickr.com/photos/' + responseItem.author_id,
-				detailTriggers = $('[data-open-detail]', wrapper);
+				detailTriggers = $('[data-open-detail]', wrapper),
+				titleId = 'feed__title-' + index;
 
 			// If the data is not already bound
 			if (typeof $(listItem).data(responseIdentifier) === 'undefined') {
@@ -195,7 +197,9 @@ function handleAPI() {
 			);
 
 			// Populate: Title
-			$(feedMarkup.title, wrapper).html(responseItem.title);
+			$(feedMarkup.title, wrapper).attr('id', titleId);
+			$(feedMarkup.titleBtn, wrapper).html(responseItem.title);
+
 			// Populate: Image
 			$(feedMarkup.media, wrapper).attr({
 				'src': responseItem.media.m,
@@ -203,11 +207,17 @@ function handleAPI() {
 			});
 
 			// Populate: Link
-			$(feedMarkup.link, wrapper).attr('href', responseItem.link);
+			$(feedMarkup.link, wrapper).attr({
+				'aria-describedby': titleId,
+				'href': responseItem.link
+			});
+
 			// Populate: Published date
 			$(feedMarkup.date_taken, wrapper).html(responseDate);
+
 			// Populate: Published time
 			$(feedMarkup.time_taken, wrapper).html(responseTime);
+
 			// Populate: Author
 			$(feedMarkup.author, wrapper)
 				.attr('href', authorURL)
@@ -220,16 +230,42 @@ function handleAPI() {
 
 			// Populate: Tags
 			if ($(feedMarkup.tags, wrapper).length !== 0) {
-				var responseTags = responseItem.tags;
+				var responseTags = responseItem.tags,
+					readInitialTags = [],
+					readMoreTags = [],
+					markupTags = $(feedMarkup.tags, wrapper);
 
 				// Reformat tags
 				responseTags = responseTags.split(' ');
 
+				// If there are too many tags
+				if (responseTags.length > 12) {
+					// Split them up into chunks
+					readInitialTags = responseTags.slice(0, 12);
+					readMoreTags = responseTags.slice(12);
+					responseTags = readInitialTags;
+				}
+
 				$.each(responseTags, function(index, tag) {
 					var list = $('<li class="tags__list-item">' + tag + '</li>');
 
-					$(feedMarkup.tags, wrapper).append(list)
+					// Add tags
+					markupTags.append(list);
 				});
+
+				if (readMoreTags.length !== 0) {
+					markupTags.after('<ul data-read-more></ul>');
+
+					$.each(readMoreTags, function(index, tag) {
+						var list = $('<li class="tags__list-item">' + tag + '</li>');
+
+						// Add additional tags
+						$('[data-read-more]').append(list);
+					});
+
+					// Initialise hideShow plugin
+					initHideShow();
+				}
 			}
 
 			detailTriggers.on('click', function() {
@@ -247,4 +283,22 @@ function handleAPI() {
 		// Bind events to new markup
 		bindEvents();
 	});
+}
+
+function initHideShow() {
+	/*
+	 * Initialise hideShow plugin
+	 */
+    'use strict';
+
+	var readMoreComponents = $('[data-read-more]');
+
+	if (readMoreComponents.length !== 0) {
+		readMoreComponents.hideShow({
+			hideText: 'Less tags',
+			showText: 'More tags',
+			speed: '300',
+		    state: 'hidden'
+		});
+	}
 }

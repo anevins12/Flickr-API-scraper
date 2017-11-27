@@ -1,11 +1,17 @@
 # flickr API scraper
-An app that scrapes the flickr API from a tag and displays results in one page.
+A jQuery app that scrapes the flickr API from a tag and displays results in one page.
 
-# Techniques
-I've tried to reduce the amounts of API calls by manipulating the data that is already returned.
-For instance:
-* The author_id field returns the username and ID and I've filtered out the username;
-* The description field duplicates information that is already present on the page. I have hidden this with CSS.
+## Techniques
+To avoid mess I've tried to separate the generation of HTML from JS where possible.
+
+I've limited the API calls to 1 call, resulting in the following compromises:
+* The author_id field returned both username and ID, resulting in extra processing to extract the username;
+* The description field duplicates information that is already present on the page. For now I have hidden the duplicates with CSS.
+
+## Additional features
+* Loading animation
+* Handling focus order
+* "More tags" button
 
 ## Setup
 ### Node
