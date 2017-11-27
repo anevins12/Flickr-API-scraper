@@ -57,6 +57,7 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'node_modules/jquery/dist/jquery.min.js',
+					'bower_components/jquery.hide-show/jquery.hideShow.min.js',
 					'node_modules/dateformat/lib/dateformat.js',
 					'src/js/flickr-api-scraper.js'
 				],

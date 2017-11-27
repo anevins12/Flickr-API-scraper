@@ -11,6 +11,7 @@ I've limited the API calls to 1 call, resulting in the following compromises:
 ## Additional features
 * Loading animation
 * Handling focus order
+* "More tags" button
 
 ## Setup
 ### Node

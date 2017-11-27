@@ -199,6 +199,7 @@ function handleAPI() {
 			// Populate: Title
 			$(feedMarkup.title, wrapper).attr('id', titleId);
 			$(feedMarkup.titleBtn, wrapper).html(responseItem.title);
+
 			// Populate: Image
 			$(feedMarkup.media, wrapper).attr({
 				'src': responseItem.media.m,
@@ -229,16 +230,40 @@ function handleAPI() {
 
 			// Populate: Tags
 			if ($(feedMarkup.tags, wrapper).length !== 0) {
-				var responseTags = responseItem.tags;
+				var responseTags = responseItem.tags,
+					readInitialTags = [],
+					readMoreTags = [],
+					markupTags = $(feedMarkup.tags, wrapper);
 
 				// Reformat tags
 				responseTags = responseTags.split(' ');
 
+				// If there are too many tags
+				if (responseTags.length > 12) {
+					// Split them up into chunks
+					readInitialTags = responseTags.slice(0, 12);
+					readMoreTags = responseTags.slice(12);
+					responseTags = readInitialTags;
+				}
+
 				$.each(responseTags, function(index, tag) {
 					var list = $('<li class="tags__list-item">' + tag + '</li>');
 
-					$(feedMarkup.tags, wrapper).append(list);
+					markupTags.append(list);
 				});
+
+				if (readMoreTags.length !== 0) {
+					markupTags.after('<ul data-read-more></ul>');
+
+					$.each(readMoreTags, function(index, tag) {
+						var list = $('<li class="tags__list-item">' + tag + '</li>');
+
+						$('[data-read-more]').append(list);
+					});
+
+					// Initialise hideShow plugin
+					initHideShow();
+				}
 			}
 
 			detailTriggers.on('click', function() {
@@ -256,4 +281,22 @@ function handleAPI() {
 		// Bind events to new markup
 		bindEvents();
 	});
+}
+
+function initHideShow() {
+	/*
+	 * Initialise hideShow plugin
+	 */
+    'use strict';
+
+	var readMoreComponents = $('[data-read-more]');
+
+	if (readMoreComponents.length !== 0) {
+		readMoreComponents.hideShow({
+			hideText: 'Less tags',
+			showText: 'More tags',
+			speed: '300',
+		    state: 'hidden'
+		});
+	}
 }
