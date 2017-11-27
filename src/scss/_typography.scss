@@ -34,7 +34,15 @@ button {
 
 button,
 a {
-    background: yellow;
+    background: $yellow;
+
+    &:focus {
+        outline: 3px solid $blue;
+    }
+}
+
+.js-hide-show_btn {
+    background: lightskyblue;
 }
 
 .hidden {

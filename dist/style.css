@@ -96,6 +96,12 @@ button {
 button,
 a {
   background: yellow; }
+  button:focus,
+  a:focus {
+    outline: 3px solid lightskyblue; }
+
+.js-hide-show_btn {
+  background: lightskyblue; }
 
 .hidden {
   border: 0;
