@@ -10,41 +10,41 @@
 	<div class="grid">
 		<div class="grid-container">
 
+			<img alt="Getting flickr feed" class="loading" data-loading src="src/img/loading.svg" />
+
 			<div class="template template-listing clearfix" id="template-listing">
 				<h1>Flickr public feed</h1>
-
-				<img alt="Getting flickr feed" class="loading" data-loading src="src/img/loading.svg" />
 
 				<div class="feed" data-feed-wrapper>
 					<ul class="feed__list" data-feed-list>
 						<li class="feed__list-item" data-feed-container>
 							<div class="feed__image-wrapper">
 								<button aria-controls="template-detail" data-open-detail>
-									<img alt="Title of feed" class="feed__image" data-feed-img src="http://placehold.it/100x100" />
+									<img alt="Title of feed" class="feed__image" data-feed-img src="" />
 								</button>
 							</div><!-- .feed__image-wrapper -->
 							<div class="feed__detail">
-								<h2 class="feed__title" id="feed__title-1">
-									<button aria-controls="template-detail" class="feed__title__btn" data-feed-title data-open-detail>Photo title 1</button>
+								<h2 class="feed__title" id="{{ id }}" data-feed-title>
+									<button aria-controls="template-detail" class="feed__title__btn" data-feed-title-btn data-open-detail>{{ title }}</button>
 								</h2>
 								<div class="feed__author-wrapper">
 									<div class="byline">
 										<ul class="byline__list">
 											<li class="byline__list-item feed__date">
 												<span>Published:</span>
-												<span data-feed-date>21st Mar 2017</span>
+												<span data-feed-date>{{ date }}</span>
 												<span>at</span>
-												<span data-feed-time>12:00</span>
+												<span data-feed-time>{{ time }}</span>
 											</li>
 											<li class="byline__list-item feed__author">
-												<a href="#" data-feed-author>Author name</a>
+												<a href="{{ author_url }}" data-feed-author>{{ author }}</a>
 											</li>
 										</ul>
 									</div><!-- .byline -->
 								</div><!-- .feed__author-wrapper -->
 								<div class="feed__reference-wrapper">
 									<p class="feed__reference">
-										<a aria-describedby="feed__title-1" class="feed__reference__link" data-feed-reference href="#">View on flickr</a>
+										<a aria-describedby="{{ id }}" class="feed__reference__link" data-feed-reference href="{{ link }}">View on flickr</a>
 									</p>
 								</div><!-- .feed__author-wrapper -->
 							</div><!-- .feed__detail -->
@@ -63,22 +63,21 @@
 				<div class="byline">
 					<ul class="byline__list">
 						<li class="byline__list-item">
-							<a href="#" data-feed-author>Author name</a>
+							<a href="{{ author_url }}" data-feed-author>{{ author }}</a>
 						</li>
 						<li class="byline__list-item">
 							<span>Published:</span>
-							<span data-feed-published>21st Mar 2017 at 12:00</span>
+							<span data-feed-date>{{ date }}</span>
+							<span>at</span>
+							<span data-feed-time>{{ time }}</span>
 						</li>
 					</ul>
 				</div><!-- .byline -->
 				<div class="grid-column grid-column--33">
-					<img alt="" class="feed__image" data-feed-img src="http://placehold.it/200x200" />
+					<img alt="" class="feed__image" data-feed-img src="" />
 				</div><!-- .grid-column -->
 				<div class="grid-column grid-column--66">
-					<div data-feed-desc>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultrices ullamcorper libero, eu pharetra ipsum consequat eget. Nunc scelerisque venenatis ante, ut euismod ante aliquam vitae. Fusce dictum lacinia mollis. Sed eget elementum neque. Pellentesque pellentesque ante nec lorem hendrerit pellentesque. Aliquam ipsum arcu, auctor vel libero in, lacinia laoreet ipsum. Nulla eu lorem egestas, elementum arcu sit amet, semper risus. Pellentesque fermentum nibh nec nisi posuere, finibus ultrices ipsum aliquet. Quisque vitae consectetur tellus. Mauris ullamcorper, erat vel commodo blandit, magna neque fermentum ex, eu laoreet eros neque dictum risus. Curabitur dui orci, feugiat non ornare id, mattis et est. In hac habitasse platea dictumst. Nunc rutrum mauris lacus, sit amet vehicula mauris blandit eu. Integer commodo aliquet mi. Quisque ac enim ante.
-						</p>
-					</div>
+					<div data-feed-desc>{{ description }}</div>
 					<div class="tags">
 						<h2 class="tags__title">Tags:</h2>
 						<ul class="tags__list" data-feed-tag-list>
