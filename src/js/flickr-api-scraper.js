@@ -92,7 +92,7 @@ function handleFocus(target) {
 
 function handleAPI() {
 	/*
-	 * Extracts and applies API to the DOM.
+	 * Extracts and applies API to the template.
 	 *
 	 * To avoid embedding markup inside of the script,
 	 * DOM items will be cloned
@@ -114,13 +114,14 @@ function handleAPI() {
 
 	$.getJSON(api, function(data) {
 		var feedMarkup = {
-				list: $('[data-feed-list]', wrapper),
-				title: '[data-feed-title]',
-				media: '[data-feed-img]',
-				link: '[data-feed-reference]',
-				date_taken: '[data-feed-date]',
 				author: '[data-feed-author]',
-				tag: '[data-feed-tag]',
+				date_taken: '[data-feed-date]',
+				description: '[data-feed-desc]',
+				link: '[data-feed-reference]',
+				list: $('[data-feed-list]', wrapper),
+				media: '[data-feed-img]',
+				tags: '[data-feed-tag-list]',
+				title: '[data-feed-title]',
 				time_taken: '[data-feed-time]'
 			},
 			responseItems = data.items,
@@ -142,16 +143,43 @@ function handleAPI() {
 			feedMarkup.list.append(clonedContainer);
 		}
 
-		$.each(responseItems, function(index, item) {
-			var responseItem = $(item).get(0),
+		$.each(responseItems, function populateItem(index, item) {
+			/*
+			 * Extract response and populate DOM
+			 * This applies to both templates
+			 */
+			var responseIdentifier = 'js-response',
+				listItem,
+				responseItem,
+				// The template
+				wrapper;
+
+			// If data has already been loaded from the API
+			if (index === false) {
+				listItem = item;
+				responseItem = item.data(responseIdentifier);
+				wrapper = $('.template-detail');
+			} else {
 				// All list items
-				listItems = $(containerIdentifier),
+				var listItems = $('[data-feed-container]');
 				// Filter the current list item
-				listItem = listItems.get(index),
-				responseDate = responseItem.published,
+				listItem = listItems.get(index);
+				responseItem = $(item).get(0);
+				// The template
+				wrapper = listItem;
+			}
+
+			var responseDate = responseItem.published,
 				responseAuthor = responseItem.author,
 				responseTime,
-				authorURL = '//www.flickr.com/photos/' + responseItem.author_id;
+				authorURL = '//www.flickr.com/photos/' + responseItem.author_id,
+				detailTriggers = $('[data-open-detail]', wrapper);
+
+			// If the data is not already bound
+			if (typeof $(listItem).data(responseIdentifier) === 'undefined') {
+				// Store the data on each list item
+				$(listItem).data(responseIdentifier, item);
+			}
 
 			// Reformat date
 			responseDate = new Date(responseDate);
@@ -160,29 +188,56 @@ function handleAPI() {
 			// Reformat time
 			responseTime = dateFormat(responseTime, 'h:MM');
 
-			// Reformat author; remove brackets and speech marks
+			// Reformat author: Remove brackets and speech marks
 			responseAuthor = responseAuthor.substring(
 				responseAuthor.indexOf('(') + 2,
 				responseAuthor.lastIndexOf(')') - 1
 			);
 
 			// Populate: Title
-			$(feedMarkup.title, listItem).html(responseItem.title);
+			$(feedMarkup.title, wrapper).html(responseItem.title);
 			// Populate: Image
-			$(feedMarkup.media, listItem).attr({
+			$(feedMarkup.media, wrapper).attr({
 				'src': responseItem.media.m,
 				'alt': responseItem.title
 			});
+
 			// Populate: Link
-			$(feedMarkup.link, listItem).attr('href', responseItem.link);
+			$(feedMarkup.link, wrapper).attr('href', responseItem.link);
 			// Populate: Published date
-			$(feedMarkup.date_taken, listItem).html(responseDate);
+			$(feedMarkup.date_taken, wrapper).html(responseDate);
 			// Populate: Published time
-			$(feedMarkup.time_taken, listItem).html(responseTime);
+			$(feedMarkup.time_taken, wrapper).html(responseTime);
 			// Populate: Author
-			$(feedMarkup.author, listItem)
+			$(feedMarkup.author, wrapper)
 				.attr('href', authorURL)
 				.html(responseAuthor);
+
+			// Populate: Description
+			if ($(feedMarkup.description, wrapper).length !== 0) {
+				$(feedMarkup.description, wrapper).html(responseItem.description);
+			}
+
+			// Populate: Tags
+			if ($(feedMarkup.tags, wrapper).length !== 0) {
+				var responseTags = responseItem.tags;
+
+				// Reformat tags
+				responseTags = responseTags.split(' ');
+
+				$.each(responseTags, function(index, tag) {
+					var list = $('<li class="tags__list-item">' + tag + '</li>');
+
+					$(feedMarkup.tags, wrapper).append(list)
+				});
+			}
+
+			detailTriggers.on('click', function() {
+				var container = $(this).parents('[data-feed-container]');
+
+				// The container has bound response data
+				populateItem(false, container);
+			});
 		});
 
 		// Show feed

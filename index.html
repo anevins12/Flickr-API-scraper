@@ -53,7 +53,7 @@
 				</div><!-- .feed -->
 			</div><!-- .template-listing -->
 			<div class="template template-detail clearfix" id="template-detail">
-				<h1>Photo title 1</h1>
+				<h1 data-feed-title>Photo title 1</h1>
 				<div class="backlink">
 					<button aria-controls="template-listing" class="backlink__btn" data-open-listing>
 						Back
@@ -74,20 +74,14 @@
 				<div class="grid-column grid-column--33">
 					<img alt="" class="feed__image" data-feed-img src="http://placehold.it/200x200" />
 				</div><!-- .grid-column -->
-				<div class="grid-column grid-column--66" data-feed-desc>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultrices ullamcorper libero, eu pharetra ipsum consequat eget. Nunc scelerisque venenatis ante, ut euismod ante aliquam vitae. Fusce dictum lacinia mollis. Sed eget elementum neque. Pellentesque pellentesque ante nec lorem hendrerit pellentesque. Aliquam ipsum arcu, auctor vel libero in, lacinia laoreet ipsum. Nulla eu lorem egestas, elementum arcu sit amet, semper risus. Pellentesque fermentum nibh nec nisi posuere, finibus ultrices ipsum aliquet. Quisque vitae consectetur tellus. Mauris ullamcorper, erat vel commodo blandit, magna neque fermentum ex, eu laoreet eros neque dictum risus. Curabitur dui orci, feugiat non ornare id, mattis et est. In hac habitasse platea dictumst. Nunc rutrum mauris lacus, sit amet vehicula mauris blandit eu. Integer commodo aliquet mi. Quisque ac enim ante.
-					</p>
-					<p>Duis placerat nibh non diam venenatis, et congue tellus ultrices. Vivamus venenatis dui lorem, id sagittis diam pharetra nec. Proin finibus a enim eu fermentum. Vestibulum molestie posuere eros, a interdum dui auctor ut. Fusce nec purus mauris. Donec vestibulum ligula placerat tortor viverra sollicitudin. In lobortis ornare sagittis. Curabitur venenatis finibus sapien, quis rhoncus nunc consectetur a. Nullam rhoncus nisi congue ligula bibendum finibus.
-					</p>
+				<div class="grid-column grid-column--66">
+					<div data-feed-desc>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultrices ullamcorper libero, eu pharetra ipsum consequat eget. Nunc scelerisque venenatis ante, ut euismod ante aliquam vitae. Fusce dictum lacinia mollis. Sed eget elementum neque. Pellentesque pellentesque ante nec lorem hendrerit pellentesque. Aliquam ipsum arcu, auctor vel libero in, lacinia laoreet ipsum. Nulla eu lorem egestas, elementum arcu sit amet, semper risus. Pellentesque fermentum nibh nec nisi posuere, finibus ultrices ipsum aliquet. Quisque vitae consectetur tellus. Mauris ullamcorper, erat vel commodo blandit, magna neque fermentum ex, eu laoreet eros neque dictum risus. Curabitur dui orci, feugiat non ornare id, mattis et est. In hac habitasse platea dictumst. Nunc rutrum mauris lacus, sit amet vehicula mauris blandit eu. Integer commodo aliquet mi. Quisque ac enim ante.
+						</p>
+					</div>
 					<div class="tags">
 						<h2 class="tags__title">Tags:</h2>
-						<ul class="tags__list">
-							<li class="tags__list-item">
-								<a class="tags__tag" data-feed-tag href="#">Tag 1</a>
-							</li>
-							<li class="tags__list-item">
-								<a class="tags__tag" data-feed-tag href="#">Tag 2</a>
-							</li>
+						<ul class="tags__list" data-feed-tag-list>
 						</ul>
 					</div><!-- .tags -->
 				</div><!-- .grid-column -->
