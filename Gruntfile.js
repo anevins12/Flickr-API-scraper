@@ -76,8 +76,33 @@ module.exports = function(grunt) {
 					'dist/flickr-api-scraper.min.js': ['src/js/flickr-api-scraper.js']
 				}
 			}
+		},
+		imagemin: {
+			dynamic: {
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['**/*.{png,jpg,gif,svg}'],
+					dest: 'dist/'
+				}]
+			}
+		},
+		cssmin: {
+			target: {
+				files: [{
+					expand: true,
+					cwd: 'dist/',
+					src: ['*.css'],
+					dest: 'dist',
+					ext: '.min.css'
+				}]
+			}
 		}
 	});
 
+	// Development
 	grunt.registerTask('serve', ['watch']);
+
+	// Production
+	grunt.registerTask('production', ['scsslint', 'sass', 'jshint', 'uglify', 'imagemin']);
 };

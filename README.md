@@ -11,7 +11,8 @@ I've limited the API calls to 1 call, resulting in the following compromises:
 ## Additional features
 * Loading animation
 * Handling focus order
-* "More tags" button
+* "More tags" button on tags > 12
+* Production build task
 
 ## Setup
 ### Node
@@ -44,6 +45,12 @@ $ http-server
 Use `npm run serve` to watch over file changes:
 ```bash
 $ npm run serve
+```
+
+## Building
+Use `npm run build` to build production files:
+```bash
+$ npm run build
 ```
 
 ## Accessibility concerns
