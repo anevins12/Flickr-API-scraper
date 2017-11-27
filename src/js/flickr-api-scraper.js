@@ -249,6 +249,7 @@ function handleAPI() {
 				$.each(responseTags, function(index, tag) {
 					var list = $('<li class="tags__list-item">' + tag + '</li>');
 
+					// Add tags
 					markupTags.append(list);
 				});
 
@@ -258,6 +259,7 @@ function handleAPI() {
 					$.each(readMoreTags, function(index, tag) {
 						var list = $('<li class="tags__list-item">' + tag + '</li>');
 
+						// Add additional tags
 						$('[data-read-more]').append(list);
 					});
 

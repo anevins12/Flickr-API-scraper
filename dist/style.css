@@ -88,9 +88,14 @@ button {
   background: none;
   border: 0;
   cursor: pointer;
+  display: inline-block;
   font-size: inherit;
   padding: 0;
   text-decoration: underline; }
+
+button,
+a {
+  background: yellow; }
 
 .hidden {
   border: 0;
