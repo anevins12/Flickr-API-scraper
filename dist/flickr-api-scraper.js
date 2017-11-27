@@ -479,7 +479,10 @@ function handleAPI() {
 				var responseTags = responseItem.tags,
 					readInitialTags = [],
 					readMoreTags = [],
-					markupTags = $(feedMarkup.tags, wrapper);
+					markupTags = $(feedMarkup.tags, wrapper),
+					tagUrl = 'https://www.flickr.com/photos/tags/',
+					listMarkup = '<li class="tags__list-item"></li>',
+					tagMarkup;
 
 				// Reformat tags
 				responseTags = responseTags.split(' ');
@@ -493,20 +496,26 @@ function handleAPI() {
 				}
 
 				$.each(responseTags, function(index, tag) {
-					var list = $('<li class="tags__list-item">' + tag + '</li>');
+					var listItem = $(listMarkup);
 
-					// Add tags
-					markupTags.append(list);
+					tagMarkup = '<a href="' + tagUrl + tag +  '">' + tag + '</a>';
+
+					// Add tag
+					listItem.append(tagMarkup);
+					markupTags.append(listItem);
 				});
 
 				if (readMoreTags.length !== 0) {
 					markupTags.after('<ul data-read-more></ul>');
 
 					$.each(readMoreTags, function(index, tag) {
-						var list = $('<li class="tags__list-item">' + tag + '</li>');
+						var listItem = $(listMarkup);
 
-						// Add additional tags
-						$('[data-read-more]').append(list);
+						tagMarkup = '<a href="' + tagUrl + tag +  '">' + tag + '</a>';
+
+						// Add tag
+						listItem.append(tagMarkup);
+						$('[data-read-more]').append(listItem);
 					});
 
 					// Initialise hideShow plugin
