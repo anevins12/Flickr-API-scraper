@@ -50,7 +50,6 @@ module.exports = function(grunt) {
 		scsslint: {
 			allFiles: ['src/scss/components/*.scss', 'src/scss/*.scss'],
 			options: {
-				bundleExec: true,
 				reporterOutput: 'scss-lint-report.xml'
 			},
 		},
