@@ -1,0 +1,22 @@
+linters:
+
+  Indentation:
+    enabled: true
+    allow_non_nested_indentation: false
+    character: tab
+    width: 1
+
+  FinalNewline:
+    enabled: false
+
+  PseudoElement:
+    enabled: false
+
+  SelectorFormat:
+    enabled: false
+
+  LeadingZero:
+    enabled: false
+
+  ImportPath:
+    enabled: false

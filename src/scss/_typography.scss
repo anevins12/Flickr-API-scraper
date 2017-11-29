@@ -1,6 +1,6 @@
 body {
-    font-family: sans-serif;
-    line-height: 1.5;
+	font-family: sans-serif;
+	line-height: 1.5;
 }
 
 h1,
@@ -23,39 +23,39 @@ h3 {
 }
 
 button {
-    background: none;
-    border: 0;
-    cursor: pointer;
-    display: inline-block;
-    font-size: inherit;
-    padding: 0;
-    text-decoration: underline;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	display: inline-block;
+	font-size: inherit;
+	padding: 0;
+	text-decoration: underline;
 }
 
 button,
 a {
-    background: $yellow;
+	background: $yellow;
 
-    &:focus {
-        outline: 3px solid $blue;
-    }
+	&:focus {
+		outline: 3px solid $blue;
+	}
 }
 
 .js-hide-show_btn {
-    background: $blue;
+	background: $blue;
 }
 
 .hidden {
-    border: 0;
-    clip: rect(1px,1px,1px,1px);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 .clearfix {
-    @include clearfix;
+	@include clearfix;
 }

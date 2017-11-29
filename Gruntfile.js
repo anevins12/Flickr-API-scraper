@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
 				files: ['src/scss/components/*.scss', 'src/scss/*.scss'],
-				tasks: ['sass'],
+				tasks: ['scsslint', 'sass'],
 				options: {
 					spawn: false
 				},
@@ -48,9 +48,14 @@ module.exports = function(grunt) {
 			],
 		},
 		scsslint: {
-			allFiles: ['src/scss/components/*.scss', 'src/scss/*.scss'],
+			allFiles: [
+				'src/scss/components/*.scss', 
+				'src/scss/*.scss',
+				'!src/scss/_resets.scss'
+			],
 			options: {
-				reporterOutput: 'scss-lint-report.xml'
+				reporterOutput: 'scss-lint-report.xml',
+				config: '.scss-lint.yml'
 			},
 		},
 		concat: {

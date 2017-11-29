@@ -2,8 +2,8 @@
 
 .loading {
 	display: none;
-	max-width: 150px;
 	margin: 0 auto;
+	max-width: 150px;
 
 	&.js-is-visible {
 		display: block;

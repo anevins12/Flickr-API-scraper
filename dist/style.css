@@ -1,43 +1,119 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  border: 0;
+  font-family: inherit;
+  font-size: 100%;
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
   vertical-align: baseline; }
 
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block; }
 
 body {
   line-height: 1; }
 
-ol, ul {
+ol,
+ul {
   list-style: none; }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none; }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none; }
 
@@ -95,13 +171,13 @@ button {
 
 button,
 a {
-  background: yellow; }
+  background: #ff0; }
   button:focus,
   a:focus {
-    outline: 3px solid lightskyblue; }
+    outline: 3px solid #87cefa; }
 
 .js-hide-show_btn {
-  background: lightskyblue; }
+  background: #87cefa; }
 
 .hidden {
   border: 0;
@@ -114,9 +190,9 @@ a {
   width: 1px; }
 
 .clearfix:after {
-  content: "";
-  display: table;
-  clear: both; }
+  clear: both;
+  content: '';
+  display: table; }
 
 @media (min-width: 800px) {
   .backlink {
@@ -148,9 +224,9 @@ a {
     padding-top: 10px; }
     @media (min-width: 480px) {
       .feed .feed__list-item:after {
-        content: "";
-        display: table;
-        clear: both; } }
+        clear: both;
+        content: '';
+        display: table; } }
     .feed .feed__list-item:first-child {
       border: 0;
       margin-top: 10px;
@@ -207,8 +283,8 @@ a {
 
 .loading {
   display: none;
-  max-width: 150px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  max-width: 150px; }
   .loading.js-is-visible {
     display: block; }
 
