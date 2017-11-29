@@ -4,6 +4,7 @@
   "description": "",
   "main": "flickr-api-scraper.js",
   "scripts": {
+    "test": "grunt test",
     "serve": "grunt serve",
     "production": "grunt production"
   },
@@ -31,9 +32,15 @@
     "grunt-contrib-uglify": "^3.2.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-http-server": "^2.0.0",
+    "grunt-karma": "^2.0.0",
     "grunt-sass": "^2.0.0",
     "grunt-scss-lint": "^0.5.0",
+    "jasmine-core": "^2.8.0",
     "jquery": "^3.2.1",
+    "karma": "^1.7.1",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
     "load-grunt-tasks": "^3.5.2"
   }
 }
