@@ -20,7 +20,7 @@ First time setup of this plugin will require the node packages to be installed.
 
 If you have NVM installed, make sure to use the correct node version:
 ```bash
-$ nvm use 0.10
+$ nvm use 8.9.x
 ```
 Next install the plugin's node packages:
 
